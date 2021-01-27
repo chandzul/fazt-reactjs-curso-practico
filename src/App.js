@@ -1,13 +1,38 @@
-// import { Component } from 'react'
+import { Component } from 'react';
 import './App.css';
 
-function Helloworld({mytext, subtitle}) {
-  return (
-    <div id="hello">
-      <h3>{subtitle}</h3>
-      {mytext}
-    </div>
-  );
+// function Helloworld({mytext, subtitle}) {
+//   return (
+//     <div id="hello">
+//       <h3>{subtitle}</h3>
+//       {mytext}
+//     </div>
+//   );
+// }
+
+class Helloworld extends Component {
+
+  state = {
+    show: true,
+  }
+
+  toggleShow() {
+    this.setState({show: false})
+  }
+
+  render(){
+    if (this.state.show){
+      return (
+        <div id="hello">
+          <h3>{this.props.subtitle}</h3>
+          {this.props.mytext}
+          <button onClick={this.toggleShow.bind(this)}>Cambiar Estado</button>
+        </div>
+      )
+    } else {
+      return <h1>There are not elements</h1>
+    }
+  }
 }
 
 function App() {

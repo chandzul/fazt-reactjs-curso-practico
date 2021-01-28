@@ -1,10 +1,19 @@
 import { Component } from 'react';
 import './App.css';
 
+import tasks from './sample/tasks.json';
+import { Tasks } from "./components/Tasks";
+
 class App extends Component {
+  state = {
+    tasks
+  }
+
   render() {
     return (
-      <h1>Hello World</h1>
+      <div>
+        <Tasks tasks={this.state.tasks} />
+      </div>
     );
   }
 }

@@ -47,7 +47,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ### Notes about `this`
 
-```
+```js
 /*
  * Cambiando el estado de un propiedad en React
  */

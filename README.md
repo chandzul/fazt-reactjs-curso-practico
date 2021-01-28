@@ -45,26 +45,45 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+### Notes about `this`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+/*
+ * Cambiando el estado de un propiedad en React
+ */
+state = {
+  show: true
+}
 
-### Analyzing the Bundle Size
+/*
+ * Cuando trabajamos con react es comun perder el scope de `this`,
+ * como por ejemplo cuando llamamos a una funcion. aqui React, ya
+ * ya no sabe a que `this` se esta refiriendo.
+ */
+toggleShow() {
+	this.setState({show: false})
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<button onClick={this.toggleShow}>Cambiar Estado</button>
 
-### Making a Progressive Web App
+/*
+ * Para solucionar este problema tenemos dos opciones
+ * OPCION 1: usamos el metodo `.bind(this)` de JS para pasar
+ * this a la funcion y con esto poder cambiar el estado.
+ */
+toggleShow() {
+	this.setState({show: false})
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<button onClick={this.toggleShow.bind(this)}>Cambiar Estado</button>
 
-### Advanced Configuration
+/*
+ * OPCION 2: usamos un arrow function(función flecha) para que 
+ * `this` exista en la función ya que lo toma del ambito mas cercano.
+ */
+toggleShow = _ => {
+	this.setState({show: false})
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<button onClick={this.toggleShow}>Cambiar Estado</button>
+```

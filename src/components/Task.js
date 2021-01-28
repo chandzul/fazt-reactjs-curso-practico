@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 
 class Task extends Component {
   render() {
+
+    const { task } = this.props;
+
     return(
-      <>
-        <p >
-          { this.props.task.title } - { this.props.task.description } - { this.props.task.done } - { this.props.task.id }
+      <div className="task">
+          { task.title } - { task.description } - { task.done } - { task.id }
           <input type="checkbox"/>
           <button>
             x
           </button>
-        </p>
-      </>
+      </div>
     );
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Task.css';
 
 class Task extends Component {
@@ -17,14 +18,18 @@ class Task extends Component {
     return(
       <div className="task" style={this.StyleCompleted()}>
           { task.title } - { task.description } - { task.done } - { task.id }
-          <input type="checkbox"/>
-          <button style={btnDelete}>
+          <input type="checkbox" onChange={this.props.checkDone.bind(this, task.id)}/>
+          <button style={btnDelete} onClick={this.props.deleteTask.bind(this, task.id)}>
             x
           </button>
       </div>
     );
   }
 }
+
+Task.propTypes = {
+  task: PropTypes.object.isRequired
+};
 
 const btnDelete = {
   fontSize: '18px',

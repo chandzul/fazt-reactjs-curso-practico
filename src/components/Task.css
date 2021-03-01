@@ -4,3 +4,7 @@
     padding: 16px;
     border-radius: 6px;
 }
+
+.task:hover {
+    border: 1px solid red;
+}
